@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>新闻中心 - Caelus Studio</title>
-  <meta name="description" content="Caelus Studio 新闻中心：工作室的最新动态、产品发布与活动信息。" />
+  <title>Caelus Studio 合作伙伴计划正式启动 - Caelus Studio 新闻中心</title>
+  <meta name="description" content="Caelus Studio 合作计划正式启动，面向行业开放合作通道：授权服务商、合作制作项目与其他合作方向。专业、透明、共赢。" />
   <meta name="theme-color" content="#0b0b0b" />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Caelus Studio" />
-  <meta property="og:title" content="新闻中心 - Caelus Studio" />
-  <meta property="og:description" content="Caelus Studio 的最新动态、产品发布与活动信息。" />
+  <meta property="og:title" content="Caelus Studio 合作伙伴计划正式启动" />
+  <meta property="og:description" content="诚邀各大工作室携手合作：授权服务商、合作制作项目与更多开放方向。专业、透明、共赢。" />
   <meta property="og:locale" content="zh_CN" />
   <script>
     (function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();
@@ -20,32 +20,26 @@
 
     :root {
       --bg-primary: #0b0b0b;
-      --bg-secondary: #0b0b0b;
       --bg-card: #111;
       --text-primary: #f0f0f0;
       --text-secondary: #d0d0d0;
       --text-muted: #888;
       --border-color: rgba(255,255,255,0.06);
-      --shadow-card: 0 4px 16px rgba(0,0,0,0.3);
       --accent: #0a84ff;
       --accent-soft: rgba(10,132,255,0.12);
       --footer-color: #555;
-      --footer-highlight: #666;
     }
 
     [data-theme="light"] {
       --bg-primary: #f5f5f5;
-      --bg-secondary: #ffffff;
       --bg-card: #ffffff;
       --text-primary: #1a1a1a;
       --text-secondary: #2a2a2a;
       --text-muted: #555;
       --border-color: rgba(0,0,0,0.08);
-      --shadow-card: 0 4px 16px rgba(0,0,0,0.06);
       --accent: #0a84ff;
       --accent-soft: rgba(10,132,255,0.10);
       --footer-color: #999;
-      --footer-highlight: #aaa;
     }
 
     html { scroll-behavior: smooth; }
@@ -59,7 +53,6 @@
     }
 
     a { color: inherit; text-decoration: none; }
-    ul { list-style: none; }
 
     /* ===== 自定义圆形光标 ===== */
     body { cursor: none; }
@@ -80,15 +73,6 @@
     [data-theme="light"] .custom-cursor {
       background: rgba(0,0,0,0.06);
       border-color: rgba(0,0,0,0.15);
-    }
-    .custom-cursor.clicked {
-      width: 8px; height: 8px;
-      background: rgba(255,255,255,0.3);
-      border-color: rgba(255,255,255,0.6);
-    }
-    [data-theme="light"] .custom-cursor.clicked {
-      background: rgba(0,0,0,0.15);
-      border-color: rgba(0,0,0,0.3);
     }
     .custom-cursor.hover {
       width: 28px; height: 28px;
@@ -139,91 +123,76 @@
     .theme-toggle:hover { transform: scale(1.06); }
     .theme-toggle svg { width: 19px; height: 19px; fill: currentColor; }
 
-    /* ===== 首屏 ===== */
-    .hero {
-      padding: 9.5rem 2rem 4rem;
-      max-width: 1060px;
-      margin: 0 auto;
-      background:
-        radial-gradient(ellipse 70% 55% at 50% 0%, rgba(10,132,255,0.14), transparent 65%);
-    }
-    .kicker {
-      display: inline-block;
-      font-size: 0.85rem;
-      color: var(--accent);
-      letter-spacing: 0.12em;
-      margin-bottom: 0.7rem;
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-    }
-    .hero .sub {
-      margin-top: 1rem;
-      font-size: clamp(1rem, 2.2vw, 1.2rem);
-      font-weight: 300;
-      color: var(--text-secondary);
-    }
-
-    /* ===== 新闻列表（小格子） ===== */
-    .news-list {
-      max-width: 1060px;
-      margin: 0 auto;
-      padding: 1rem 2rem 0;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.2rem;
-    }
-    .news-card {
-      display: flex; flex-direction: column;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 1.3rem 1.4rem 1.4rem;
-      box-shadow: var(--shadow-card);
-      transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-    .news-card:hover { transform: translateY(-4px); border-color: var(--accent-soft); }
-    .news-card .body { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+    /* ===== 文章主体 ===== */
+    .article { max-width: 720px; margin: 0 auto; padding: 8.5rem 1.5rem 0; }
     .news-meta {
-      display: flex; align-items: center; gap: 0.6rem;
-      font-size: 0.75rem; color: var(--text-muted);
+      display: flex; align-items: center; gap: 0.8rem;
+      font-size: 0.8rem; color: var(--text-muted);
+      margin-bottom: 1.1rem;
     }
     .news-tag {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       color: var(--accent);
       background: var(--accent-soft);
       border: 1px solid var(--accent-soft);
-      padding: 0.12rem 0.55rem;
+      padding: 0.15rem 0.6rem;
       border-radius: 999px;
       letter-spacing: 0.05em;
-      white-space: nowrap;
     }
-    .news-card h2 { font-size: 1.05rem; font-weight: 600; line-height: 1.4; }
-    .news-card p { font-size: 0.85rem; font-weight: 300; color: var(--text-secondary); line-height: 1.65; }
-    .news-more { margin-top: auto; padding-top: 0.4rem; font-size: 0.82rem; color: var(--accent); }
-
-    /* ===== 页脚 ===== */
-/* ===== 页脚 ===== */
+    .article h1 {
+      font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+    .article .lead {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 2.2rem;
+    }
+    .article .prose p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.9;
+      margin-bottom: 1.3rem;
+    }
+    .article .prose h2 { font-size: 1.35rem; font-weight: 600; margin: 2.4rem 0 1rem; letter-spacing: -0.01em; }
+    .article .prose h3 { font-size: 1.08rem; font-weight: 600; margin: 1.8rem 0 0.7rem; }
+    .article .prose a { color: var(--accent); }
+    .article .prose a:hover { text-decoration: underline; }
+    .article .prose .highlight-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.4rem 1.6rem;
+      margin: 1.8rem 0;
+      line-height: 1.9;
+      font-weight: 300;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    .article .prose .highlight-box b { color: var(--text-primary); font-weight: 500; }
+    .back-link { display: inline-block; margin-top: 3rem; font-size: 0.92rem; color: var(--accent); }
+    .back-link:hover { text-decoration: underline; }
+    .back-link.top { margin: 0 0 2rem; font-size: 0.85rem; }
     .site-footer {
-      max-width: 1060px;
-      margin: 4.5rem auto 0;
-      padding: 2rem 2rem 3.5rem;
+      max-width: 720px;
+      margin: 3.5rem auto 0;
+      padding: 2rem 1.5rem 3.5rem;
       border-top: 1px solid var(--border-color);
-      display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
       color: var(--footer-color);
       font-size: 0.82rem;
     }
-    .site-footer .highlight { color: var(--footer-highlight); }
+    .site-footer span:last-child { color: var(--text-muted); }
 
-    /* ===== 滚动入场动画 ===== */
+    /* ===== 入场动画 ===== */
     .reveal { opacity: 0; }
-    .reveal.reveal-visible {
-      animation: heroFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
-      animation-delay: var(--reveal-delay, 0s);
-    }
+    .reveal.reveal-visible { animation: heroFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) both; }
     @keyframes heroFadeUp {
       from { opacity: 0; transform: translateY(40px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -232,16 +201,10 @@
       .reveal { opacity: 1; transform: none; }
     }
 
-    /* ===== 响应式 ===== */
-    @media (max-width: 900px) {
-      .news-list { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 600px) {
+    @media (max-width: 760px) {
       .site-nav { padding: 0 1.3rem; }
       .nav-links { display: none; }
-      .hero { padding: 7.5rem 1.3rem 3rem; }
-      .news-list { grid-template-columns: 1fr; padding: 1rem 1.3rem 0; }
-      .site-footer { padding: 2rem 1.3rem 3rem; }
+      .article { padding-top: 7rem; }
     }
   </style>
 </head>
@@ -256,6 +219,7 @@
     <ul class="nav-links">
       <li><a href="https://www.caelus.top/">主站首页</a></li>
       <li><a href="https://www.caelus.top/nav/">导航</a></li>
+      <li><a href="./">新闻中心</a></li>
     </ul>
     <button class="theme-toggle" id="themeToggle" aria-label="切换深色/浅色模式">
       <svg id="themeIcon" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>
@@ -263,65 +227,42 @@
   </div>
 </nav>
 
-<!-- ===== 首屏 ===== -->
-<section class="hero reveal">
-  <span class="kicker">新闻中心</span>
-  <h1>来自 Caelus Studio 的最新动态。</h1>
-  <div class="sub">产品发布、活动信息与工作室的每一步，都在这里。</div>
-</section>
+<!-- ===== 文章 ===== -->
+<article class="article reveal">
+  <a class="back-link top" href="./">← 返回新闻中心</a>
+  <div class="news-meta">
+    <span class="news-tag">工作室动态</span>
+    <span>2026 年 9 月 13 日 · 中国</span>
+  </div>
+  <h1>Caelus Studio 合作伙伴计划正式启动</h1>
+  <p class="lead">Caelus Studio 合作计划正式启动，诚邀各大工作室携手合作。</p>
 
-<!-- ===== 新闻列表 =====
-  新增一篇新闻时：
-  1. 复制本目录下的 _template.html，改名为 日期-英文短名.html（更新日志类可不配图）
-  2. 在这里复制一份 <a class="news-card ..."> 放到最前面（最新的排在最上面）
-  分类标签可用：产品发布 / 工作室动态 / 活动信息 / 更新日志
--->
-<section class="news-list" id="newsList">
+  <div class="prose">
+    <p>我们始终相信，优秀的作品源于志同道合者的共同打磨。现面向行业开放合作通道，期待与具备专业能力与创作热情的团队建立长期、稳定的合作关系。</p>
 
-  <a class="news-card reveal" style="--reveal-delay:0s" href="2026-09-13-partner.html">
-    <div class="body">
-      <div class="news-meta"><span class="news-tag">工作室动态</span><span>2026 年 9 月 13 日</span></div>
-      <h2>Caelus Studio 合作伙伴计划正式启动</h2>
-      <p>诚邀各大工作室携手合作：授权服务商、合作制作项目与更多开放方向。</p>
-      <span class="news-more">阅读全文 →</span>
-    </div>
-  </a>
+    <h2>合作方向</h2>
 
-  <a class="news-card reveal" style="--reveal-delay:0.08s" href="2026-09-13-keychain.html">
-    <div class="body">
-      <div class="news-meta"><span class="news-tag">产品发布</span><span>2026 年 9 月 13 日</span></div>
-      <h2>Caelus Studio 首款官方周边「钥匙扣」开启免费领取</h2>
-      <p>精致透明亚克力材质，C 形 logo 精细切割。QQ 群成员今晚 18:00 前可 0 元领取，之后恢复 ¥9.9/个。</p>
-      <span class="news-more">阅读全文 →</span>
-    </div>
-  </a>
+    <h3>一、授权服务商</h3>
+    <p>符合条件的团队可申请成为 Caelus Studio 官方授权服务商，获得品牌授权使用、技术资源支持、商务优先推荐及联合宣发等权益。我们期待合作方具备扎实的专业基础与良好的交付记录，具体授权标准与权益细则将在初步沟通后提供。</p>
 
-</section>
+    <h3>二、合作制作项目</h3>
+    <p>开放联合开发、分包协作、资源置换、委托制作等多种合作模式，覆盖从前期概念到最终交付的全流程或阶段性协作。无论是大型长线项目还是专项任务，我们都将以专业的项目管理流程确保品质与效率。</p>
 
-<!-- ===== 新闻列表 =====
-  新增一篇新闻时：
-  1. 复制本目录下的 _template.html，改名为 日期-英文短名.html（更新日志类可不配图）
-  2. 在这里复制一份 <a class="news-card ..."> 放到最前面（最新的排在最上面）
-  分类标签可用：产品发布 / 工作室动态 / 活动信息 / 更新日志
--->
-<section class="news-list" id="newsList">
+    <h3>三、其他合作方向</h3>
+    <p>我们也对技术管线共建、人才交流、联合参展、发行渠道共享等方向保持开放。如有独特的合作构想，欢迎随时与我们探讨——好的合作往往始于一次不设限的对话。</p>
 
-  <a class="news-card first reveal" href="2026-09-13-keychain.html">
-    <div class="thumb"><img src="assets/keychain-banner.png" alt="Caelus Studio 周边：钥匙扣" loading="lazy"></div>
-    <div class="body">
-      <div class="news-meta"><span class="news-tag">产品发布</span><span>2026 年 9 月 13 日</span></div>
-      <h2>Caelus Studio 首款官方周边「钥匙扣」开启免费领取</h2>
-      <p>精致透明亚克力材质，C 形 logo 精细切割。QQ 群成员今晚 18:00 前可 0 元领取，之后恢复 ¥9.9/个。</p>
-      <span class="news-more">阅读全文 →</span>
-    </div>
-  </a>
+    <h2>合作理念</h2>
+    <p><b>专业、透明、共赢。</b>以清晰的流程为基础，以及时的沟通为保障，以合理的分配机制让每一方投入都获得应有回报。</p>
 
-</section>
+    <h2>如何开启合作</h2>
+    <p>请发送你的想法给我们的 QQ，或发送至电子邮箱 <a href="mailto:caelustudio@outlook.com">caelustudio@outlook.com</a>，我们将视情况安排进一步沟通。</p>
+  </div>
+</article>
 
 <!-- ===== 页脚 ===== -->
-<div class="site-footer reveal">
+<div class="site-footer">
   <span>©️ 2026 Caelus Studio</span>
-  <span class="highlight">网页由人工智能辅助生成</span>
+  <span>新闻中心</span>
 </div>
 
 <script>
@@ -371,7 +312,7 @@
   });
 })();
 
-/* ===== 滚动入场动画 ===== */
+/* ===== 入场动画 ===== */
 (function() {
   var revealEls = document.querySelectorAll('.reveal');
   var observer = new IntersectionObserver(function(entries) {
@@ -381,7 +322,7 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  }, { threshold: 0.12 });
   revealEls.forEach(function(el) { observer.observe(el); });
 })();
 </script>

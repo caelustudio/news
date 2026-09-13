@@ -167,6 +167,29 @@
       color: var(--text-secondary);
     }
 
+    /* ===== 搜索框 ===== */
+    .search-wrap { max-width: 1060px; margin: 0 auto; padding: 0 2rem 1.6rem; }
+    .search-wrap input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 0.85rem 1.1rem;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      font-family: inherit;
+      transition: border-color 0.2s ease;
+    }
+    .search-wrap input:focus { outline: none; border-color: var(--accent); }
+    .search-empty {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 1rem 2rem 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .search-empty[hidden] { display: none; }
+
     /* ===== 新闻列表（小格子） ===== */
     .news-list {
       max-width: 1060px;
@@ -276,6 +299,11 @@
   2. 在这里复制一份 <a class="news-card ..."> 放到最前面（最新的排在最上面）
   分类标签可用：产品发布 / 工作室公告 / 活动信息 / 更新日志
 -->
+<div class="search-wrap reveal">
+  <input type="search" id="newsSearch" placeholder="搜索新闻、更新日志…" autocomplete="off" />
+</div>
+<p class="search-empty" id="searchEmpty" hidden>没有找到相关内容。</p>
+
 <section class="news-list" id="newsList">
 
   <a class="news-card reveal" style="--reveal-delay:0s" href="2026-09-13-partner.html">
@@ -364,6 +392,61 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
   revealEls.forEach(function(el) { observer.observe(el); });
+})();
+
+/* ===== 站内搜索（Pagefind） ===== */
+(function() {
+  var input = document.getElementById('newsSearch');
+  var empty = document.getElementById('searchEmpty');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.news-card'));
+  var pf = null;
+  import('./pagefind/pagefind.js').then(function(m) { pf = m; }).catch(function() {});
+  var timer = null;
+
+  function showAll() {
+    cards.forEach(function(c) { c.style.display = ''; });
+    empty.hidden = true;
+  }
+
+  function domFallback(q) {
+    var shown = 0;
+    cards.forEach(function(c) {
+      var hit = c.textContent.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+      c.style.display = hit ? '' : 'none';
+      if (hit) shown++;
+    });
+    empty.hidden = shown > 0;
+  }
+
+  async function run() {
+    var q = input.value.trim();
+    if (!q) { showAll(); return; }
+    if (!pf || !pf.search) { domFallback(q); return; }
+    try {
+      var res = await pf.search(q);
+      var urls = {};
+      var list = res.results.slice(0, 100);
+      for (var i = 0; i < list.length; i++) {
+        var d = await list[i].data();
+        var u = d.url.replace(/^\//, '');
+        urls[u] = true;
+      }
+      var shown = 0;
+      cards.forEach(function(c) {
+        var hit = !!urls[c.getAttribute('href')];
+        c.style.display = hit ? '' : 'none';
+        if (hit) shown++;
+      });
+      empty.hidden = shown > 0;
+    } catch (e) {
+      domFallback(q);
+    }
+  }
+
+  input.addEventListener('input', function() {
+    clearTimeout(timer);
+    timer = setTimeout(run, 200);
+  });
 })();
 </script>
 </body>

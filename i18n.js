@@ -13,7 +13,7 @@
     '时间 & 形式': ['时间 & 形式', '時間 & 形式', 'Time & Format'],
     '时间：北京时间 2026 年 10 月 1 日 00:00': ['时间：北京时间 2026 年 10 月 1 日 00:00', '時間：北京時間 2026 年 10 月 1 日 00:00', 'Time: 00:00 CST, October 1, 2026'],
     '形式：线上发布，无需报名，直接通过主站与新闻中心观看': ['形式：线上发布，无需报名，直接通过主站与新闻中心观看', '形式：線上發布，無需報名，直接透過主站與新聞中心觀看', 'Format: online, no registration needed, watch via the main site and news center'],
-    '时长：预计 30–45 分钟，结束后内容会保留在站点上随时回看': ['时长：预计 30–45 分钟，结束后内容会保留在站点上随时回看', '時長：預計 30–45 分鐘，結束後內容會保留在站點上隨時回看', 'Length: approximately 30–45 minutes; content will remain on the site for replay'],
+    '时长：全场约 4 分钟，回放长期保留，可随时观看': ['时长：全场约 4 分钟，回放长期保留，可随时观看', '時長：全場約 4 分鐘，回放長期保留，可隨時觀看', 'Length: about 4 minutes in total; the replay is kept for the long term and can be watched anytime'],
     '会上会讲什么': ['会上会讲什么', '會上會講什麼', 'What Will Be Covered'],
     '我们会正式发布 CaelusOS 的系统界面设计规范，展示锁屏、通知中心、Dock、多任务窗口与系统设置在一套视觉语言下是如何保持一致的。': ['我们会正式发布 CaelusOS 的系统界面设计规范，展示锁屏、通知中心、Dock、多任务窗口与系统设置在一套视觉语言下是如何保持一致的。', '我們會正式發布 CaelusOS 的系統介面設計規範，展示鎖屏、通知中心、Dock、多工視窗與系統設定在一套視覺語言下是如何保持一致的。', 'We will officially release the CaelusOS system interface design spec, showing how the lock screen, notification center, Dock, multitasking windows and system settings stay consistent under one visual language.'],
     '如何观看': ['如何观看', '如何觀看', 'How to Watch'],

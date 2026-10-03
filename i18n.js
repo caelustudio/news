@@ -23,6 +23,7 @@
     '抖音：': ['抖音：', '抖音：', 'Douyin: '],
     '回放长期保留，随时欢迎你回来看。': ['回放长期保留，随时欢迎你回来看。', '回放長期保留，隨時歡迎你回來看。', 'The replay is kept for the long term; feel free to come back anytime.'],
     '下载': ['下载', '下載', 'Download'],
+    '登录': ['登录', '登入', 'Sign in'],
     '发布会上正式发布的 CaelusOS 系统界面设计资源，已在活动开始后同步开放下载。你可以从以下平台获取完整资源，不限速、无广告：': ['发布会上正式发布的 CaelusOS 系统界面设计资源，已在活动开始后同步开放下载。你可以从以下平台获取完整资源，不限速、无广告：', '發表會上正式發布的 CaelusOS 系統介面設計資源，已在活動開始後同步開放下載。你可以從以下平台取得完整資源，不限速、無廣告：', 'The CaelusOS system interface design resources officially released at the conference are now available for download. You can get the full package from the following platforms, free, ad-free and unthrottled:'],
     'GitHub：': ['GitHub：', 'GitHub：', 'GitHub: '],
     'GitSource · 即溯：': ['GitSource · 即溯：', 'GitSource · 即溯：', 'GitSource · Jisu: '],
@@ -186,7 +187,9 @@
     if (obs) obs.disconnect();
     try {
       if (!document.body) return;
-      var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, { acceptNode: function (node) { var p = node.parentNode; return (p && (p.nodeName === 'SCRIPT' || p.nodeName === 'STYLE')) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT; } }), n, nodes = [];
+      var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, { acceptNode: function (node) { var p = node.parentNode; if (p && (p.nodeName === 'SCRIPT' || p.nodeName === 'STYLE')) return NodeFilter.FILTER_REJECT;
+        if (p && p.closest && p.closest('[data-no-i18n]')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT; } }), n, nodes = [];
       while ((n = w.nextNode())) nodes.push(n);
       for (var i = 0; i < nodes.length; i++) {
         if (!ORIG_N.has(nodes[i])) ORIG_N.set(nodes[i], norm(nodes[i].nodeValue));

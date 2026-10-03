@@ -193,6 +193,29 @@
     }
     .search-empty[hidden] { display: none; }
 
+    /* ===== 分类筛选 ===== */
+    .news-filters {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 2rem 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .news-filter {
+      padding: 0.35rem 0.95rem;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--text-secondary);
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .news-filter:hover { color: var(--text-primary); border-color: var(--text-muted); }
+    .news-filter.active { color: #fff; background: var(--accent); border-color: var(--accent); }
+
     /* ===== 新闻列表（小格子） ===== */
     .news-list {
       max-width: 1060px;
@@ -316,6 +339,14 @@ h1,h2,h3,h4,h5,h6{font-weight:500 !important;-webkit-text-stroke:.3px currentCol
   <input type="search" id="newsSearch" placeholder="搜索新闻、更新日志…" autocomplete="off" />
 </div>
 <p class="search-empty" id="searchEmpty" hidden>没有找到相关内容。</p>
+
+<div class="news-filters reveal" id="newsFilters">
+  <button class="news-filter active" data-cat="" type="button">全部</button>
+  <button class="news-filter" data-cat="产品发布" type="button">产品发布</button>
+  <button class="news-filter" data-cat="活动回顾" type="button">活动回顾</button>
+  <button class="news-filter" data-cat="更新日志" type="button">更新日志</button>
+  <button class="news-filter" data-cat="工作室公告" type="button">工作室公告</button>
+</div>
 
 <section class="news-list" id="newsList">
 
@@ -452,7 +483,7 @@ h1,h2,h3,h4,h5,h6{font-weight:500 !important;-webkit-text-stroke:.3px currentCol
   revealEls.forEach(function(el) { observer.observe(el); });
 })();
 
-/* ===== 站内搜索（Pagefind） ===== */
+/* ===== 站内搜索（Pagefind）+ 分类筛选 ===== */
 (function() {
   var input = document.getElementById('newsSearch');
   var empty = document.getElementById('searchEmpty');
@@ -460,20 +491,37 @@ h1,h2,h3,h4,h5,h6{font-weight:500 !important;-webkit-text-stroke:.3px currentCol
   var pf = null;
   import('./pagefind/pagefind.js').then(function(m) { pf = m; }).catch(function() {});
   var timer = null;
+  var curCat = '';        // '' 表示全部
+  var lastUrls = null;    // 上一次搜索命中的链接集合，null 表示当前无搜索词
 
-  function showAll() {
-    cards.forEach(function(c) { c.style.display = ''; });
-    empty.hidden = true;
+  function catOf(c) {
+    var t = c.querySelector('.news-tag');
+    return t ? t.textContent.trim() : '';
   }
-
-  function domFallback(q) {
+  function apply(urls) {
     var shown = 0;
     cards.forEach(function(c) {
-      var hit = c.textContent.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+      var okCat = !curCat || catOf(c) === curCat;
+      var okQ = !urls || !!urls[c.getAttribute('href')];
+      var hit = okCat && okQ;
       c.style.display = hit ? '' : 'none';
       if (hit) shown++;
     });
     empty.hidden = shown > 0;
+  }
+  function showAll() {
+    lastUrls = null;
+    apply(null);
+  }
+
+  function domFallback(q) {
+    var urls = {};
+    cards.forEach(function(c) {
+      if (curCat && catOf(c) !== curCat) return;
+      if (c.textContent.toLowerCase().indexOf(q.toLowerCase()) !== -1) urls[c.getAttribute('href')] = true;
+    });
+    lastUrls = urls;
+    apply(urls);
   }
 
   async function run() {
@@ -489,13 +537,8 @@ h1,h2,h3,h4,h5,h6{font-weight:500 !important;-webkit-text-stroke:.3px currentCol
         var u = d.url.replace(/^\//, '');
         urls[u] = true;
       }
-      var shown = 0;
-      cards.forEach(function(c) {
-        var hit = !!urls[c.getAttribute('href')];
-        c.style.display = hit ? '' : 'none';
-        if (hit) shown++;
-      });
-      empty.hidden = shown > 0;
+      lastUrls = urls;
+      apply(urls);
     } catch (e) {
       domFallback(q);
     }
@@ -504,6 +547,17 @@ h1,h2,h3,h4,h5,h6{font-weight:500 !important;-webkit-text-stroke:.3px currentCol
   input.addEventListener('input', function() {
     clearTimeout(timer);
     timer = setTimeout(run, 200);
+  });
+
+  /* ---- 分类筛选 ---- */
+  var btns = Array.prototype.slice.call(document.querySelectorAll('.news-filter'));
+  btns.forEach(function(b) {
+    b.addEventListener('click', function() {
+      btns.forEach(function(x) { x.classList.remove('active'); });
+      b.classList.add('active');
+      curCat = b.getAttribute('data-cat') || '';
+      apply(lastUrls);
+    });
   });
 })();
 </script>

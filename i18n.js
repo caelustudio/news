@@ -171,6 +171,7 @@
     '：控件所属幻灯片，用于生成正确的幻灯片与形状访问路径。': ['：控件所属幻灯片，用于生成正确的幻灯片与形状访问路径。', '：控制項所屬投影片，用於產生正確的投影片與形狀存取路徑。', ': the slide the controls live on, used to generate the correct slide/shape access paths.'],
     '：用户要发送给 DeepSeek 的 ActiveX 文本框；': ['：用户要发送给 DeepSeek 的 ActiveX 文本框；', '：使用者要傳送給 DeepSeek 的 ActiveX 文字方塊；', ': the ActiveX text box the user sends to DeepSeek;'],
     '：运行时从幻灯片上的控件读取密钥，而非写死进代码；': ['：运行时从幻灯片上的控件读取密钥，而非写死进代码；', '：執行時從投影片上的控制項讀取金鑰，而非寫死進程式碼；', ': read the key from a control on the slide at runtime, instead of hard-coding it;'],
+    '全部': ['全部', '全部', 'All'],
   };
 
   var LABEL = { 'zh-CN': '简', 'zh-TW': '繁', 'en': 'EN' };
